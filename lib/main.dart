@@ -4,6 +4,9 @@ import 'package:page_transition/page_transition.dart';
 
 void main() => runApp(MyApp());
 
+
+//SPLASH SCREEN//
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
+//SEGUNDA VENTANA//
 
 class MainScreen extends StatelessWidget {
   @override
