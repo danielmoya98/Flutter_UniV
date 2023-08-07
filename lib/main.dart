@@ -2,27 +2,64 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
+
+
 void main() => runApp(MyApp());
 
 //SPLASH SCREEN//
 
-class MyApp extends StatelessWidget {
+
+
+  class MyApp extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+      return MaterialApp(
+          title: 'Univalle Movil',
+          debugShowCheckedModeBanner: false,
+          home: AnimatedSplashScreen(
+              duration: 5000,
+              splash: Image.asset('assets/logo.jpg'),
+              nextScreen: VloginContainer(),
+              splashTransition: SplashTransition.fadeTransition,
+              pageTransitionType: PageTransitionType.leftToRight,
+              backgroundColor:  const Color(0xFF850842)));
+    }
+  }
+
+//SEGUNDA VENTANA//
+// TODO: LA ANIMACICON SOLO REALIZA CUANDO LA INVOCAMOS A UNA CLASE QUE DEVUELVA UN CONTAINER Y SI DEVOLVEMOS UN MATERIAL COMO VERAN ABAJO OMITE LA ANIMACION.
+// TODO: ABRIA QUE BUSCAR UNA FORMA DE CONVERTIR EL MATERIAL APP A CONTAINER O REPLICARLO TODO DENTREO DE UNO , DESDE YA LES DIJO QUE REPLICADO NO SE VE IGUAL.
+
+class VloginContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Univalle Movil',
-        debugShowCheckedModeBanner: false,
-        home: AnimatedSplashScreen(
-            duration: 3000,
-            splash: Image.asset('assets/logo.jpg'),
-            nextScreen: MainScreen(),
-            splashTransition: SplashTransition.fadeTransition,
-            pageTransitionType: PageTransitionType.leftToRight,
-            backgroundColor: const Color(0xFF850842)));
+    return Container(
+      color: Colors.white, // Color de fondo del Container
+      child: Center(
+        child: Column(
+          children: [
+            Container(
+              alignment: Alignment.topCenter,
+              padding: const EdgeInsets.only(top: 30, bottom: 20),
+              child: const Text(
+                'Univalle',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+            // Resto del contenido del Column
+            // ...
+          ],
+        ),
+      ),
+    );
   }
 }
 
-//SEGUNDA VENTANA//
+
+
 
 class MainScreen extends StatelessWidget {
   @override
@@ -208,7 +245,10 @@ class MainScreen extends StatelessWidget {
                         ),
                         label: const Text(
                           'Desbloquea tu cuenta',
-                          style: TextStyle(
+                          style:
+
+                          TextStyle(
+
                             color: Colors.white, // Color del texto del botón
                           ),
                         ),
@@ -221,9 +261,8 @@ class MainScreen extends StatelessWidget {
           ),
         ),
       ),
-    ); //hola
+    );
   }
 }
-
 
 
