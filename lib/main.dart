@@ -19,7 +19,7 @@ void main() => runApp(MyApp());
           home: AnimatedSplashScreen(
               duration: 5000,
               splash: Image.asset('assets/logo.jpg'),
-              nextScreen: VloginContainer(),
+              nextScreen: MainScreen(),
               splashTransition: SplashTransition.fadeTransition,
               pageTransitionType: PageTransitionType.leftToRight,
               backgroundColor:  const Color(0xFF850842)));
@@ -29,6 +29,10 @@ void main() => runApp(MyApp());
 //SEGUNDA VENTANA//
 // TODO: LA ANIMACICON SOLO REALIZA CUANDO LA INVOCAMOS A UNA CLASE QUE DEVUELVA UN CONTAINER Y SI DEVOLVEMOS UN MATERIAL COMO VERAN ABAJO OMITE LA ANIMACION.
 // TODO: ABRIA QUE BUSCAR UNA FORMA DE CONVERTIR EL MATERIAL APP A CONTAINER O REPLICARLO TODO DENTREO DE UNO , DESDE YA LES DIJO QUE REPLICADO NO SE VE IGUAL.
+
+
+
+    // VISTA DE PRUEBA
 
 class VloginContainer extends StatelessWidget {
   @override
@@ -58,7 +62,9 @@ class VloginContainer extends StatelessWidget {
   }
 }
 
+//VISTA OFICIAL
 
+// TODO :  CHICOS SI QUIEREN CREAR VISTAS EN OTROS ARCHIVOS DART PUEDEN HACERLO - CREANDO UN ARCHIVO DART EN LA CARPETA LIB/ARCHIVO Y DE AHI IMPORTARLO AL MAI Y LLMARLO MEDIANTE SU CLASE
 
 
 class MainScreen extends StatelessWidget {
@@ -168,6 +174,10 @@ class MainScreen extends StatelessWidget {
                       ),
                       child: ElevatedButton(
                         onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => VloginContainer()),    //TODO: CHICAS BASICAMENTE ESTA ES LA FORMA DE MOVERSE ENTRE VISTA  MEDIANTE UNA LAMDA LLAMAS A LA CLASE QUE CONTENGA ESA VISTA
+                          );
                           // Acción al presionar el botón
                         },
                         style: ElevatedButton.styleFrom(
