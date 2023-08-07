@@ -8,10 +8,12 @@ class Perfil extends StatefulWidget {
 }
 
 class _PerfilUnivalle extends State<Perfil> {
-  bool HorizontalListView = true; // Controla la visibilidad del ListView horizontal
+  bool horizontalListView = true; // Controla la visibilidad del ListView horizontal
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+
     return MaterialApp(
       title: 'Material App',
       debugShowCheckedModeBanner: false,
@@ -22,9 +24,9 @@ class _PerfilUnivalle extends State<Perfil> {
               Align(
                 alignment: Alignment.center,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 150),
+                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
                   margin: const EdgeInsets.only(top: 20),
-                  width: 410,
+                  width: screenWidth * 0.8,
                   height: 300,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
@@ -67,12 +69,12 @@ class _PerfilUnivalle extends State<Perfil> {
                     children: [
                       GestureDetector(
                         onTap: () {
-
+                          // Acción al hacer clic en "Actividades"
                         },
-                        child: const Text(
+                        child: Text(
                           'Actividades',
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: screenWidth * 0.06,
                             color: Colors.red,
                           ),
                         ),
@@ -80,16 +82,16 @@ class _PerfilUnivalle extends State<Perfil> {
                       GestureDetector(
                         onTap: () {
                           setState(() {
-                            // Cambiar la visibilidad del ListView al hacer clic en "Actividades"
-                            HorizontalListView = !HorizontalListView;
+                            // Cambiar la visibilidad del ListView al hacer clic en "ver mas"
+                            horizontalListView = !horizontalListView;
                           });
                         },
-                        child: const Padding(
-                          padding: EdgeInsets.only(right: 20),
+                        child: Padding(
+                          padding: EdgeInsets.only(right: screenWidth * 0.1),
                           child: Text(
                             'ver mas',
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: screenWidth * 0.04,
                               color: Colors.blue,
                             ),
                           ),
@@ -100,7 +102,7 @@ class _PerfilUnivalle extends State<Perfil> {
                 ),
               ),
               const SizedBox(height: 20), // Espacio entre el contenedor y el ListView
-              if (HorizontalListView)
+              if (horizontalListView)
                 Container(
                   padding: const EdgeInsets.only(left: 9),
                   height: 100, // Altura del ListView horizontal
@@ -119,7 +121,7 @@ class _PerfilUnivalle extends State<Perfil> {
                           }
                         },
                         child: Container(
-                          width: 300,
+                          width: screenWidth * 0.6,
                           margin: const EdgeInsets.symmetric(horizontal: 3),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
@@ -146,10 +148,10 @@ class _PerfilUnivalle extends State<Perfil> {
                     },
                   ),
                 ),
-              if (!HorizontalListView)
+              if (!horizontalListView)
                 Container(
                   padding: const EdgeInsets.only(left: 0),
-                  width: 410,
+                  width: screenWidth * 0.8,
                   height: 300, // Altura del ListView vertical
                   child: ListView.builder(
                     scrollDirection: Axis.vertical, // Cambio a dirección vertical
@@ -177,13 +179,20 @@ class _PerfilUnivalle extends State<Perfil> {
                             borderRadius: BorderRadius.circular(12),
                             color: Colors.red,
                           ),
-                          child: const Row(
+                          child: Row(
                             children: [
-                              Padding(
-                                padding: EdgeInsets.only(left: 20, right: 20),
-                                child: Icon(Icons.star, color: Colors.yellow),
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                width: 60,
+                                height: 60,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.red,
+                                ),
+                                child: const Icon(Icons.star, color: Colors.yellow),
                               ),
-                              Column(
+                              const SizedBox(width: 10), // Espacio entre el círculo y los textos
+                              const Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -201,7 +210,7 @@ class _PerfilUnivalle extends State<Perfil> {
               const SizedBox(height: 20),
               Container(
                 padding: const EdgeInsets.only(left: 0),
-                width: 410,
+                width: screenWidth * 0.8,
                 height: 300, // Altura del ListView vertical
                 child: ListView.builder(
                   scrollDirection: Axis.vertical, // Cambio a dirección vertical
@@ -222,7 +231,7 @@ class _PerfilUnivalle extends State<Perfil> {
                       },
                       child: Container(
                         margin: const EdgeInsets.symmetric(vertical: 10),
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        padding: const EdgeInsets.only(left: 0 ),
                         width: double.infinity,
                         height: 60,
                         decoration: BoxDecoration(
@@ -231,7 +240,9 @@ class _PerfilUnivalle extends State<Perfil> {
                         ),
                         child: Row(
                           children: [
+
                             Container(
+
                               alignment: Alignment.center,
                               width: 60,
                               height: 60,
